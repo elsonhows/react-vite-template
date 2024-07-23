@@ -1,14 +1,15 @@
-import { createLazyFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
-import reactLogo from "../assets/react.svg";
-import viteLogo from "/vite.svg";
+import { createFileRoute } from '@tanstack/react-router'
+import { useState } from 'react'
+import reactLogo from '@/assets/react.svg'
+import viteLogo from '/vite.svg'
 
-export const Route = createLazyFileRoute("/")({
+export const Route = createFileRoute('/')({
   component: Index,
-});
+})
 
 function Index() {
-  const [count, setCount] = useState(0);
+  console.log('render Index')
+  const [count, setCount] = useState(0)
 
   return (
     <>
@@ -22,16 +23,12 @@ function Index() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
+        <button onClick={() => setCount((count) => count + 1)}>count is {count}</button>
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <p className="read-the-docs">Click on the Vite and React logos to learn more</p>
     </>
-  );
+  )
 }

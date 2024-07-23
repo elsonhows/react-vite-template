@@ -1,35 +1,53 @@
-import "../index.css";
-import "../App.css";
+// import "../index.css";
+// import "../App.css";
 
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { createRootRoute, Link, Outlet } from "@tanstack/react-router";
-import { TanStackRouterDevtools } from "@tanstack/router-devtools";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { QueryClient } from '@tanstack/react-query'
+import { createRootRouteWithContext, Link, Outlet } from '@tanstack/react-router'
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
+import { lazy } from 'react'
 
-export const Route = createRootRoute({
-  component: () => {
-    const queryClient = new QueryClient();
+const TanStackRouterDevtools =
+  process.env.NODE_ENV === 'production'
+    ? () => null // Render nothing in production
+    : lazy(() =>
+        // Lazy load in development
+        import('@tanstack/router-devtools').then((res) => ({
+          default: res.TanStackRouterDevtools,
+        }))
+      )
 
+export const Route = createRootRouteWithContext<{
+  queryClient: QueryClient
+}>()({
+  component: RootComponent,
+  notFoundComponent: () => {
     return (
-      <>
-        <div className="p-2 flex gap-2">
-          <Link to="/" className="[&.active]:font-bold">
-            Home
-          </Link>{" "}
-          <Link to="/env" className="[&.active]:font-bold">
-            Env
-          </Link>{" "}
-          <Link to="/query" className="[&.active]:font-bold">
-            Query
-          </Link>
-        </div>
-        <hr />
-        <QueryClientProvider client={queryClient}>
-          <Outlet />
-          <ReactQueryDevtools initialIsOpen={false} />
-        </QueryClientProvider>
-        <TanStackRouterDevtools />
-      </>
-    );
+      <div>
+        <p>This is the notFoundComponent configured on root route</p>
+        <Link to="/">Start Over</Link>
+      </div>
+    )
   },
-});
+})
+
+function RootComponent() {
+  return (
+    <>
+      <div className="p-2 flex gap-2">
+        <Link to="/" className="[&.active]:font-bold">
+          Home
+        </Link>{' '}
+        <Link to="/env" className="[&.active]:font-bold">
+          Env
+        </Link>{' '}
+        <Link to="/query" className="[&.active]:font-bold">
+          Query
+        </Link>
+      </div>
+      <hr />
+      <Outlet />
+      <ReactQueryDevtools buttonPosition="bottom-right" />
+      <TanStackRouterDevtools position="bottom-left" />
+    </>
+  )
+}
