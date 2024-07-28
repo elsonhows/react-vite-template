@@ -2,16 +2,11 @@ import { Spinner } from '@/components/Spinner';
 import { useAuth } from '@/hooks/useAuth';
 import { routeTree } from '@/routeTree.gen';
 import { AuthProvider } from '@/utils/auth';
-import { MantineProvider, createTheme } from '@mantine/core';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { queryClient } from '@/utils/queryClient';
+import { theme } from '@/utils/theme';
+import { MantineProvider } from '@mantine/core';
+import { QueryClientProvider } from '@tanstack/react-query';
 import { ErrorComponent, RouterProvider, createRouter } from '@tanstack/react-router';
-
-// TODO: potential shift to other file?
-const theme = createTheme({
-	/** Your theme override here */
-});
-
-const queryClient = new QueryClient();
 
 // Create a new router instance
 const router = createRouter({
@@ -44,19 +39,13 @@ function InnerApp() {
 	return <RouterProvider router={router} context={{ auth }} />;
 }
 
-function App() {
-	return (
-		<AuthProvider>
-			<InnerApp />
-		</AuthProvider>
-	);
-}
-
-export default function RootProvider() {
+export default function App() {
 	return (
 		<MantineProvider theme={theme}>
 			<QueryClientProvider client={queryClient}>
-				<App />
+				<AuthProvider>
+					<InnerApp />
+				</AuthProvider>
 			</QueryClientProvider>
 		</MantineProvider>
 	);

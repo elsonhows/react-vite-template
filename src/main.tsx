@@ -1,5 +1,5 @@
-import '@/assets/styles/global.css';
-import RootProvider from '@/utils/provider';
+import App from './App';
+import '@/styles/global.css';
 import '@mantine/core/styles.css';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
@@ -10,7 +10,7 @@ if (!rootElement.innerHTML) {
 	const root = ReactDOM.createRoot(rootElement);
 	root.render(
 		<React.StrictMode>
-			<RootProvider />
+			<App />
 		</React.StrictMode>,
 	);
 }
