@@ -1,8 +1,8 @@
 html,
 body {
-	height: 100%;
-	margin: 0;
-	overflow-x: hidden;
+  height: 100%;
+  margin: 0;
+  overflow-x: hidden;
 }
 
 /* body {
@@ -15,6 +15,6 @@ body {
 } */
 
 a {
-	color: inherit;
-	text-decoration: inherit;
+  color: inherit;
+  text-decoration: inherit;
 }

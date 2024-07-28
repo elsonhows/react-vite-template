@@ -23,132 +23,132 @@ const ExpensiveIndexLazyImport = createFileRoute('/expensive/')();
 // Create/Update Routes
 
 const LoginRouteRoute = LoginRouteImport.update({
-	path: '/login',
-	getParentRoute: () => rootRoute,
+  path: '/login',
+  getParentRoute: () => rootRoute,
 } as any);
 
 const InvoicesRouteRoute = InvoicesRouteImport.update({
-	path: '/invoices',
-	getParentRoute: () => rootRoute,
+  path: '/invoices',
+  getParentRoute: () => rootRoute,
 } as any);
 
 const AsideRouteRoute = AsideRouteImport.update({
-	path: '/aside',
-	getParentRoute: () => rootRoute,
+  path: '/aside',
+  getParentRoute: () => rootRoute,
 } as any);
 
 const AuthRouteRoute = AuthRouteImport.update({
-	id: '/_auth',
-	getParentRoute: () => rootRoute,
+  id: '/_auth',
+  getParentRoute: () => rootRoute,
 } as any);
 
 const IndexRoute = IndexImport.update({
-	path: '/',
-	getParentRoute: () => rootRoute,
+  path: '/',
+  getParentRoute: () => rootRoute,
 } as any);
 
 const ExpensiveIndexLazyRoute = ExpensiveIndexLazyImport.update({
-	path: '/expensive/',
-	getParentRoute: () => rootRoute,
+  path: '/expensive/',
+  getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/expensive/index.lazy').then((d) => d.Route));
 
 const InvoicesIndexRoute = InvoicesIndexImport.update({
-	path: '/',
-	getParentRoute: () => InvoicesRouteRoute,
+  path: '/',
+  getParentRoute: () => InvoicesRouteRoute,
 } as any);
 
 const InvoicesInvoiceIdRoute = InvoicesInvoiceIdImport.update({
-	path: '/$invoiceId',
-	getParentRoute: () => InvoicesRouteRoute,
+  path: '/$invoiceId',
+  getParentRoute: () => InvoicesRouteRoute,
 } as any);
 
 const AuthProfileRouteRoute = AuthProfileRouteImport.update({
-	path: '/profile',
-	getParentRoute: () => AuthRouteRoute,
+  path: '/profile',
+  getParentRoute: () => AuthRouteRoute,
 } as any);
 
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
-	interface FileRoutesByPath {
-		'/': {
-			id: '/';
-			path: '/';
-			fullPath: '/';
-			preLoaderRoute: typeof IndexImport;
-			parentRoute: typeof rootRoute;
-		};
-		'/_auth': {
-			id: '/_auth';
-			path: '';
-			fullPath: '';
-			preLoaderRoute: typeof AuthRouteImport;
-			parentRoute: typeof rootRoute;
-		};
-		'/aside': {
-			id: '/aside';
-			path: '/aside';
-			fullPath: '/aside';
-			preLoaderRoute: typeof AsideRouteImport;
-			parentRoute: typeof rootRoute;
-		};
-		'/invoices': {
-			id: '/invoices';
-			path: '/invoices';
-			fullPath: '/invoices';
-			preLoaderRoute: typeof InvoicesRouteImport;
-			parentRoute: typeof rootRoute;
-		};
-		'/login': {
-			id: '/login';
-			path: '/login';
-			fullPath: '/login';
-			preLoaderRoute: typeof LoginRouteImport;
-			parentRoute: typeof rootRoute;
-		};
-		'/_auth/profile': {
-			id: '/_auth/profile';
-			path: '/profile';
-			fullPath: '/profile';
-			preLoaderRoute: typeof AuthProfileRouteImport;
-			parentRoute: typeof AuthRouteImport;
-		};
-		'/invoices/$invoiceId': {
-			id: '/invoices/$invoiceId';
-			path: '/$invoiceId';
-			fullPath: '/invoices/$invoiceId';
-			preLoaderRoute: typeof InvoicesInvoiceIdImport;
-			parentRoute: typeof InvoicesRouteImport;
-		};
-		'/invoices/': {
-			id: '/invoices/';
-			path: '/';
-			fullPath: '/invoices/';
-			preLoaderRoute: typeof InvoicesIndexImport;
-			parentRoute: typeof InvoicesRouteImport;
-		};
-		'/expensive/': {
-			id: '/expensive/';
-			path: '/expensive';
-			fullPath: '/expensive';
-			preLoaderRoute: typeof ExpensiveIndexLazyImport;
-			parentRoute: typeof rootRoute;
-		};
-	}
+  interface FileRoutesByPath {
+    '/': {
+      id: '/';
+      path: '/';
+      fullPath: '/';
+      preLoaderRoute: typeof IndexImport;
+      parentRoute: typeof rootRoute;
+    };
+    '/_auth': {
+      id: '/_auth';
+      path: '';
+      fullPath: '';
+      preLoaderRoute: typeof AuthRouteImport;
+      parentRoute: typeof rootRoute;
+    };
+    '/aside': {
+      id: '/aside';
+      path: '/aside';
+      fullPath: '/aside';
+      preLoaderRoute: typeof AsideRouteImport;
+      parentRoute: typeof rootRoute;
+    };
+    '/invoices': {
+      id: '/invoices';
+      path: '/invoices';
+      fullPath: '/invoices';
+      preLoaderRoute: typeof InvoicesRouteImport;
+      parentRoute: typeof rootRoute;
+    };
+    '/login': {
+      id: '/login';
+      path: '/login';
+      fullPath: '/login';
+      preLoaderRoute: typeof LoginRouteImport;
+      parentRoute: typeof rootRoute;
+    };
+    '/_auth/profile': {
+      id: '/_auth/profile';
+      path: '/profile';
+      fullPath: '/profile';
+      preLoaderRoute: typeof AuthProfileRouteImport;
+      parentRoute: typeof AuthRouteImport;
+    };
+    '/invoices/$invoiceId': {
+      id: '/invoices/$invoiceId';
+      path: '/$invoiceId';
+      fullPath: '/invoices/$invoiceId';
+      preLoaderRoute: typeof InvoicesInvoiceIdImport;
+      parentRoute: typeof InvoicesRouteImport;
+    };
+    '/invoices/': {
+      id: '/invoices/';
+      path: '/';
+      fullPath: '/invoices/';
+      preLoaderRoute: typeof InvoicesIndexImport;
+      parentRoute: typeof InvoicesRouteImport;
+    };
+    '/expensive/': {
+      id: '/expensive/';
+      path: '/expensive';
+      fullPath: '/expensive';
+      preLoaderRoute: typeof ExpensiveIndexLazyImport;
+      parentRoute: typeof rootRoute;
+    };
+  }
 }
 
 // Create and export the route tree
 
 export const routeTree = rootRoute.addChildren({
-	IndexRoute,
-	AuthRouteRoute: AuthRouteRoute.addChildren({ AuthProfileRouteRoute }),
-	AsideRouteRoute,
-	InvoicesRouteRoute: InvoicesRouteRoute.addChildren({
-		InvoicesInvoiceIdRoute,
-		InvoicesIndexRoute,
-	}),
-	LoginRouteRoute,
-	ExpensiveIndexLazyRoute,
+  IndexRoute,
+  AuthRouteRoute: AuthRouteRoute.addChildren({ AuthProfileRouteRoute }),
+  AsideRouteRoute,
+  InvoicesRouteRoute: InvoicesRouteRoute.addChildren({
+    InvoicesInvoiceIdRoute,
+    InvoicesIndexRoute,
+  }),
+  LoginRouteRoute,
+  ExpensiveIndexLazyRoute,
 });
 
 /* prettier-ignore-end */

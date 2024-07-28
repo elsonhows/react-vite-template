@@ -1,11 +1,11 @@
 import { useAuth } from '@/hooks/useAuth';
 
 export function ProfileComponent() {
-	const auth = useAuth();
+  const auth = useAuth();
 
-	return (
-		<div>
-			Username: <strong>{auth.user}</strong>
-		</div>
-	);
+  return (
+    <div>
+      Username: <strong>{auth.user}</strong>
+    </div>
+  );
 }

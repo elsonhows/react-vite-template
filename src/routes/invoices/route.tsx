@@ -3,6 +3,6 @@ import { invoicesQueryOptions } from '@/utils/queryOptions';
 import { createFileRoute } from '@tanstack/react-router';
 
 export const Route = createFileRoute('/invoices')({
-	loader: (opts) => opts.context.queryClient.ensureQueryData(invoicesQueryOptions()),
-	component: InvoicesComponent,
+  loader: (opts) => opts.context.queryClient.ensureQueryData(invoicesQueryOptions()),
+  component: InvoicesComponent,
 });
