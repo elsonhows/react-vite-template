@@ -1,7 +1,18 @@
 module.exports = {
-  trailingComma: "es5",
-  semi: false,
-  singleQuote: true,
-  printWidth: 120,
-  tabWidth: 2,
+  "printWidth": 120,
+  "tabWidth": 2,
+  "trailingComma": "all",
+  "singleQuote": true,
+  "semi": true,
+  // "importOrder": [
+  //       "^react(.*)$",
+  //       "^react-dom(.*)$",
+  //       "^react-router-dom(.*)$",
+  //       "<THIRD_PARTY_MODULES>",
+  //       "^[./].*(?<!\\.(c|sc)ss)$",
+  //       "(c|sc)ss$"
+  //   ],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true,
+  "plugins": ["@trivago/prettier-plugin-sort-imports"]
 };

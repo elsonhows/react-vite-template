@@ -1,0 +1,14 @@
+.invoicesNav {
+	display: block;
+	padding: 0.5rem;
+	color: rgb(67 56 202);
+}
+
+.invoicesNav:hover {
+  color: rgb(59 130 246);
+}
+
+.activeInvoiceNav {
+	font-weight: bold;
+	text-decoration: underline;
+}
