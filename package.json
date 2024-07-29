@@ -8,6 +8,8 @@
     "dev": "vite --open --port 3000",
     "build": "tsc -b && vite build",
     "test": "vitest",
+    "e2e:run": "playwright test",
+    "e2e:watch": "playwright test --ui",
     "coverage": "vitest run --coverage",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "format": "prettier --write .",
