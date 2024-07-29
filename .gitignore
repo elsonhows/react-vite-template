@@ -23,6 +23,9 @@ dist-ssr
 *.sln
 *.sw?
 
+# Routing
+routeTree.gen.ts
+
 # Evironment Variable
 .env
 *.local
