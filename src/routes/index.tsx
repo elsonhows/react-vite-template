@@ -1,6 +1,9 @@
-import { HomeComponent } from '@/routes/home/-components/Home';
-import { createFileRoute } from '@tanstack/react-router';
+import { createFileRoute, redirect } from '@tanstack/react-router';
 
 export const Route = createFileRoute('/')({
-  component: HomeComponent,
+  loader: () => {
+    throw redirect({
+      to: '/home',
+    });
+  },
 });

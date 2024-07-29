@@ -1,7 +1,7 @@
 import { Route, fallback } from '../route';
 import { useAuth } from '@/hooks/useAuth';
 import { sleep } from '@/utils/common';
-import { Button, Fieldset, Grid, Space, Stack, Text, TextInput } from '@mantine/core';
+import { Button, Fieldset, Stack, Text, TextInput } from '@mantine/core';
 import { useRouter, useRouterState } from '@tanstack/react-router';
 import * as React from 'react';
 
@@ -42,26 +42,21 @@ export function LoginComponent() {
   const isLoggingIn = isLoading || isSubmitting;
 
   return (
-    <Grid>
-      <Grid.Col span={3}>
-        <h3>Login page</h3>
-        {search.redirect ? (
-          <Text c="red.5">You need to login to access this page.</Text>
-        ) : (
-          <Text>Login to see all the cool content in here.</Text>
-        )}
-
-        <Space h="md" />
-
-        <form onSubmit={onFormSubmit}>
-          <Fieldset disabled={isLoggingIn}>
-            <Stack gap="sm">
-              <TextInput label="Username" placeholder="Enter your name" name="username" required />
-              <Button type="submit">{isLoggingIn ? 'Loading...' : 'Login'}</Button>
-            </Stack>
-          </Fieldset>
-        </form>
-      </Grid.Col>
-    </Grid>
+    <Stack align="center" justify="center" gap="md">
+      <h3>Login page</h3>
+      {search.redirect ? (
+        <Text c="red.5">You need to login to access this page.</Text>
+      ) : (
+        <Text>Login to see all the cool content in here.</Text>
+      )}
+      <form onSubmit={onFormSubmit}>
+        <Fieldset disabled={isLoggingIn} w="500">
+          <Stack gap="sm">
+            <TextInput label="Username" placeholder="Enter your name" name="username" required />
+            <Button type="submit">{isLoggingIn ? 'Loading...' : 'Login'}</Button>
+          </Stack>
+        </Fieldset>
+      </form>
+    </Stack>
   );
 }

@@ -1,4 +1,4 @@
-import styles from './Root.module.css';
+import styles from './Layout.module.css';
 import reactLogo from '@/assets/react.svg';
 import { Spinner } from '@/components/Spinner';
 import { useAuth } from '@/hooks/useAuth';
@@ -24,7 +24,7 @@ function RouterSpinner() {
   return <Spinner show={isLoading} />;
 }
 
-export function RootComponent() {
+export function LayoutComponent() {
   const [mobileOpened, { toggle: toggleMobile }] = useDisclosure();
   const [desktopOpened, { toggle: toggleDesktop }] = useDisclosure(true);
 
