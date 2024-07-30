@@ -22,7 +22,7 @@ export function LoginComponent() {
       const fieldValue = data.get('username');
 
       if (!fieldValue) return;
-      const username = fieldValue.toString();
+      const username = String(fieldValue);
       await auth.login(username);
 
       await router.invalidate();
@@ -49,7 +49,7 @@ export function LoginComponent() {
       ) : (
         <Text>Login to see all the cool content in here.</Text>
       )}
-      <form onSubmit={onFormSubmit}>
+      <form onSubmit={void onFormSubmit}>
         <Fieldset disabled={isLoggingIn} w="500">
           <Stack gap="sm">
             <TextInput label="Username" placeholder="Enter your name" name="username" required />

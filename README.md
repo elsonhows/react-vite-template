@@ -29,15 +29,34 @@ export default {
 - Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
 - Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
 
-## TBC
+## Quick Start
 
-- [import-meta-env](https://import-meta-env.org/): runtime environment variable
-- eslint: code liniting
-- prettier: code formatter
-- husky + lint staged: pre-commit with lint
-- mantine: component library
-- css module: css styling
-- zod: schema validation
+### Requirements
+
+- [Node.js 20+](https://nodejs.org/en)
+
+### Instructions
+
+- Copy `.env.example` to `.env` and modify it according to your environment.
+- Run `npm install`
+- Run `npm start` or `npm run dev`
+
+## Libraries
+
+- [vite](https://github.com/vitejs/vite): dev server
+- [import-meta-env](https://github.com/runtime-env/import-meta-env): runtime environment variable
+- [eslint v8.x](https://github.com/eslint/eslint): code liniting
+- [prettier](https://github.com/prettier/prettier): code formatter
+- [husky](https://github.com/typicode/husky) + [lint staged](https://github.com/lint-staged/lint-staged): pre-commit with lint
+- [tanstack router](https://github.com/TanStack/router): app router
+- [mantine](https://github.com/mantinedev/mantine): component library
+- [css module](https://github.com/css-modules/css-modules): css styling
+- [tanstack query](https://github.com/TanStack/query): handling server request
+- [redaxios](https://github.com/developit/redaxios): lightweight version of axios
+- [zod](https://github.com/colinhacks/zod): schema validation
+- [vitest](https://github.com/vitest-dev/vitest): unit testing
+- [react-testing-library](https://github.com/testing-library/react-testing-library): component testing
+- [playwright](https://github.com/microsoft/playwright): end-to-end testing
 
 ## Reference
 

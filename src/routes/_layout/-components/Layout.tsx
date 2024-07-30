@@ -34,9 +34,9 @@ export function LayoutComponent() {
 
   const handleLogout = () => {
     if (window.confirm('Are you sure you want to logout?')) {
-      auth.logout().then(() => {
-        router.invalidate().finally(() => {
-          navigate({ to: '/' });
+      void auth.logout().then(() => {
+        void router.invalidate().finally(() => {
+          void navigate({ to: '/' });
         });
       });
     }
@@ -75,7 +75,7 @@ export function LayoutComponent() {
                     Logout
                   </Button>
                 ) : (
-                  <Button variant="light" onClick={() => navigate({ to: '/login' })}>
+                  <Button variant="light" onClick={() => void navigate({ to: '/login' })}>
                     Login
                   </Button>
                 )}

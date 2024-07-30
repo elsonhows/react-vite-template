@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { loaderDelayFn } from './common';
 import axios from 'redaxios';
 

@@ -10,10 +10,10 @@ export function HomeComponent() {
     <div className={styles.layout}>
       <section>
         <div>
-          <a href="https://vitejs.dev" target="_blank">
+          <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
             <img src={viteLogo} className={styles.logo} alt="Vite logo" />
           </a>
-          <a href="https://react.dev" target="_blank">
+          <a href="https://react.dev" target="_blank" rel="noreferrer">
             <img src={reactLogo} className={`${styles.logo} ${styles.react}`} alt="React logo" />
           </a>
         </div>
@@ -29,7 +29,7 @@ export function HomeComponent() {
       <hr />
       <section>
         <h2>Environment Variables</h2>
-        <strong>Vite is running in "{import.meta.env.MODE}"</strong>
+        <strong>Vite is running in &quot;{import.meta.env.MODE}&quot;</strong>
         <p>APP_TITLE: {import.meta.env.APP_TITLE}</p>
         <p>APP_VERSION: {import.meta.env.APP_VERSION}</p>
         <p>NOT_VISIBLE_IN_CLIENT: {import.meta.env.NOT_VISIBLE_IN_CLIENT}</p>

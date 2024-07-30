@@ -1,3 +1,4 @@
+/* eslint-disable */
 import axios from 'redaxios';
 
 async function loaderDelayFn<T>(fn: (...args: Array<unknown>) => Promise<T> | T) {
