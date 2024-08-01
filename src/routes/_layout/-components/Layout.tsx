@@ -1,9 +1,8 @@
-import styles from './Layout.module.css';
 import reactLogo from '@/assets/react.svg';
 import { Spinner } from '@/components/Spinner';
 import { useAuth } from '@/hooks/useAuth';
 import { Route } from '@/routes/__root';
-import { AppShell, Burger, Button, Center, Group, Image, Text } from '@mantine/core';
+import { AppShell, Burger, Button, Center, Group, Image, NavLink, Text } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { Link, Outlet, useRouter, useRouterState } from '@tanstack/react-router';
@@ -71,11 +70,11 @@ export function LayoutComponent() {
               </Link>
               <Group ml="xl" gap="sm" visibleFrom="sm">
                 {auth.isAuthenticated ? (
-                  <Button variant="filled" onClick={handleLogout}>
+                  <Button variant="light" onClick={handleLogout}>
                     Logout
                   </Button>
                 ) : (
-                  <Button variant="light" onClick={() => navigate({ to: '/login' })}>
+                  <Button variant="filled" onClick={() => navigate({ to: '/login' })}>
                     Login
                   </Button>
                 )}
@@ -87,7 +86,7 @@ export function LayoutComponent() {
           <AppShell.Section grow>
             {(
               [
-                ['/', 'Home'],
+                ['/home', 'Home'],
                 ['/aside', 'Layout Aside'],
                 ['/expensive', 'Expensive'],
                 ['/invoices', 'Invoices'],
@@ -97,17 +96,15 @@ export function LayoutComponent() {
             ).map(([to, label]) => {
               return (
                 <div key={to}>
-                  <Link
+                  <NavLink
+                    component={Link}
+                    label={label}
                     to={to}
                     activeOptions={{
                       exact: true,
                     }}
                     preload="intent"
-                    className={styles.link}
-                    activeProps={{ className: styles.activeNavBar }}
-                  >
-                    {label}
-                  </Link>
+                  />
                 </div>
               );
             })}
