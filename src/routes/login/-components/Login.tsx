@@ -49,7 +49,7 @@ export function LoginComponent() {
       ) : (
         <Text>Login to see all the cool content in here.</Text>
       )}
-      <form onSubmit={void onFormSubmit}>
+      <form onSubmit={(event) => void onFormSubmit(event)}>
         <Fieldset disabled={isLoggingIn} w="500">
           <Stack gap="sm">
             <TextInput label="Username" placeholder="Enter your name" name="username" required />
